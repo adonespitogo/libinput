@@ -3372,7 +3372,7 @@ tp_init_palmdetect_edge(struct tp_dispatch *tp,
 
 	if (!tp->buttons.has_topbuttons && height > 55) {
 		/* top edge is 5% of the height */
-		mm.y = height * 0.1;
+		mm.y = 15;
 		edges = evdev_device_mm_to_units(device, &mm);
 		tp->palm.upper_edge = edges.y;
 	}
