@@ -3366,7 +3366,7 @@ tp_init_palmdetect_edge(struct tp_dispatch *tp,
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.left_edge = edges.x;
 
-	mm.x = width - 24;
+	mm.x = width - 30;
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.right_edge = edges.x;
 
