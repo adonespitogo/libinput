@@ -804,6 +804,7 @@ if get_option('tests')
 		'test/litest-device-wacom-bamboo-2fg-pad.c',
 		'test/litest-device-wacom-bamboo-2fg-pen.c',
 		'test/litest-device-wacom-bamboo-16fg-pen.c',
+		'test/litest-device-wacom-calibrated-tablet.c',
 		'test/litest-device-wacom-cintiq-12wx-pen.c',
 		'test/litest-device-wacom-cintiq-13hdt-finger.c',
 		'test/litest-device-wacom-cintiq-13hdt-pad.c',
@@ -975,6 +976,12 @@ if get_option('install-tests')
 else
 	man_config.set('HAVE_INSTALLED_TESTS', '')
 endif
+if get_option('debug-gui')
+	man_config.set('HAVE_DEBUG_GUI', '')
+else
+	man_config.set('HAVE_DEBUG_GUI', '.\"')
+endif
+
 src_man += files(
 	'tools/libinput.man',
 	'tools/libinput-analyze.man',
