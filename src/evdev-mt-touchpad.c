@@ -38,7 +38,7 @@
 #define DEFAULT_TRACKPOINT_ACTIVITY_TIMEOUT ms2us(300)
 #define DEFAULT_TRACKPOINT_EVENT_TIMEOUT ms2us(40)
 #define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_1 ms2us(200)
-#define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_2 ms2us(700)
+#define DEFAULT_KEYBOARD_ACTIVITY_TIMEOUT_2 ms2us(500)
 #define FAKE_FINGER_OVERFLOW bit(7)
 #define THUMB_IGNORE_SPEED_THRESHOLD 20 /* mm/s */
 
@@ -1067,10 +1067,10 @@ tp_palm_detect_edge(struct tp_dispatch *tp,
 		   the direction is within 45 degrees of the horizontal.
 		 */
 		} else if (tp_palm_detect_move_out_of_edge(tp, t, time)) {
-			t->palm.state = PALM_NONE;
-			evdev_log_debug(tp->device,
-				  "palm: touch %d released, out of edge zone\n",
-				  t->index);
+			/* t->palm.state = PALM_NONE; */
+			/* evdev_log_debug(tp->device, */
+				  /* "palm: touch %d released, out of edge zone\n", */
+				  /* t->index); */
 		}
 		return false;
 	}
@@ -3366,7 +3366,7 @@ tp_init_palmdetect_edge(struct tp_dispatch *tp,
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.left_edge = edges.x;
 
-	mm.x = width - 45;
+	mm.x = width - 30;
 	edges = evdev_device_mm_to_units(device, &mm);
 	tp->palm.right_edge = edges.x;
 
