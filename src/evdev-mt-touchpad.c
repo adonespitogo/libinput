@@ -906,10 +906,10 @@ tp_palm_detect_dwt_triggered(struct tp_dispatch *tp,
 		   */
 		if (t->palm.time == 0 ||
 		    t->palm.time > tp->dwt.keyboard_last_press_time) {
-			t->palm.state = PALM_NONE;
-			evdev_log_debug(tp->device,
-					"palm: touch %d released, timeout after typing\n",
-					t->index);
+			/* t->palm.state = PALM_NONE; */
+			/* evdev_log_debug(tp->device, */
+					/* "palm: touch %d released, timeout after typing\n", */
+					/* t->index); */
 		}
 	}
 
@@ -1067,10 +1067,10 @@ tp_palm_detect_edge(struct tp_dispatch *tp,
 		   the direction is within 45 degrees of the horizontal.
 		 */
 		} else if (tp_palm_detect_move_out_of_edge(tp, t, time)) {
-			/* t->palm.state = PALM_NONE; */
-			/* evdev_log_debug(tp->device, */
-				  /* "palm: touch %d released, out of edge zone\n", */
-				  /* t->index); */
+			t->palm.state = PALM_NONE;
+			evdev_log_debug(tp->device,
+				  "palm: touch %d released, out of edge zone\n",
+				  t->index);
 		}
 		return false;
 	}
