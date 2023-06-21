@@ -904,12 +904,12 @@ tp_palm_detect_dwt_triggered(struct tp_dispatch *tp,
 		   started once we stop typing will be able to control the
 		   pointer (alas not tap, etc.).
 		   */
-		if (t->palm.time == 0 ||
-		    t->palm.time > tp->dwt.keyboard_last_press_time) {
-			/* t->palm.state = PALM_NONE; */
-			/* evdev_log_debug(tp->device, */
-					/* "palm: touch %d released, timeout after typing\n", */
-					/* t->index); */
+		if (!tp_palm_in_edge(tp, t) && (t->palm.time == 0 ||
+		    t->palm.time > tp->dwt.keyboard_last_press_time)) {
+			t->palm.state = PALM_NONE;
+			evdev_log_debug(tp->device,
+					"palm: touch %d released, timeout after typing\n",
+					t->index);
 		}
 	}
 
