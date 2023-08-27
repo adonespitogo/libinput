@@ -1,3 +1,5 @@
+# This a customized libinput for Asus UM5302TA
+
 libinput
 ========
 
@@ -10,6 +12,27 @@ minimize the amount of custom input code the user of libinput needs to
 provide the common set of functionality that users expect. Input event
 processing includes scaling touch coordinates, generating
 relative pointer events from touchpads, pointer acceleration, etc.
+
+Installation
+--------------
+
+Clone the `libinput-git` package from AUR:
+
+```
+git clone https://aur.archlinux.org/libinput-git.git
+cd libinput-git
+```
+
+Update the source in `PKGBUILD` file:
+
+```
+source=(git+https://github.com/adonespitogo/libinput)
+```
+Then install the package:
+
+```
+makepkg -si
+```
 
 User documentation
 ------------------
