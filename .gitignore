@@ -10,3 +10,6 @@
 *.gcno
 tags
 *.gnuplot
+/libinput
+/pkg
+/src
